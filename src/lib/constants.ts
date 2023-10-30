@@ -7,4 +7,3 @@ export enum Service {
 export const IS_PUBLIC_KEY = 'isPublic'
 
 export const JWT_COOKIE_NAME = 'jwt'
-export const ROLES_KEY = 'roles'

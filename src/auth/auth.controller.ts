@@ -5,7 +5,6 @@ import {
   HttpCode,
   Inject,
   Post,
-  Request,
   Res,
   UseGuards,
   UseInterceptors
@@ -96,8 +95,8 @@ export class AuthController {
   @ApiNotFoundResponse({ description: 'The token user does not exist' })
   @UseInterceptors(ClassSerializerInterceptor)
   @Get('profile')
-  async profile(@Request() req): Promise<UserEntity> {
-    const user = await this.usersService.findOne({ id: req.user.id })
+  async profile(@CurrentUser() currentUser: UserPayload): Promise<UserEntity> {
+    const user = await this.usersService.findOne({ id: currentUser.id })
 
     if (!user) throw new UserNotFoundException()
 

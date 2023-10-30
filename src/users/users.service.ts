@@ -50,6 +50,9 @@ export class UsersService {
     if (currentUser.id !== user.id && currentUser.role === Role.USER)
       throw new UnauthorizedException()
 
+    if (options.data.role && currentUser.role === Role.USER)
+      throw new UnauthorizedException()
+
     return this.prisma.user.update(options)
   }
 

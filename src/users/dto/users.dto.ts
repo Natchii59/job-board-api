@@ -96,7 +96,7 @@ export class UpdateUserDto implements Prisma.UserUpdateInput {
   })
   @IsEmail()
   @ValidateIf(IsOptionalNotNull)
-  @Transform(({ value }) => (value ? value.toLowerCase() : value))
+  @Transform(({ value }) => value.toLowerCase())
   email?: string
 
   @ApiProperty({

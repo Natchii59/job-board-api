@@ -194,7 +194,7 @@ export class UsersController {
   async delete(
     @Param('id', ParseIntPipe) id: number,
     @CurrentUser() currentUser: UserPayload,
-    @Res() res: Response
+    @Res({ passthrough: true }) res: Response
   ): Promise<void> {
     const deletedUser = await this.usersService.delete({ id }, currentUser)
 
